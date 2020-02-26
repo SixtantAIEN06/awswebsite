@@ -1,6 +1,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
-
+  urlNow=window.location.href.split('/')
+  urlCheck=urlNow[urlNow.length-2]
+  if(urlCheck=="gallery")
+  {
+    $('.gallery').addClass('active')
+  }
+  else if(urlCheck=="facerecognition")
+  {
+    $('.facerecognition').addClass('active')
+  }
+  else if(urlCheck.includes("styletransfer"))
+  {
+    $('.styletransfer').addClass('active')
+  }
+  else if(urlCheck=="delmypic")
+  {
+    $('.delmypic').addClass('active')
+  }
+  
+  
+  console.log(urlNow[urlNow.length-2]);
   function submitXML() {
     var fileInput = $('#inputGroupFile01').get(0).files[0];
     console.info(fileInput);
