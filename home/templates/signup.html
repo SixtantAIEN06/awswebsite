@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock%}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <style>
+     
+     img:not([class]){
+      filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+      margin:30px;
+      border-radius: 9px;
+  
+      }
+
+      img:hover:not(#radius):not(#blah):not(#gla){
+        width: 140px;
+        height: 140px;
+      }
+
+
+      input{
+        display: none;
+      }
+
+      figcaption{
+        text-align: center;
+      }
+      </style>
+</head>
+
+<body>
+<div  style="margin-top: 200px;">
+    
+    <div class="row justify-content-center" >
+        <div class="col-6">
+            <form name='form1' method="post" onsubmit="return submitfunction()">
+                {%csrf_token%}
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="username">姓名</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               required>
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label for="user_id">使用者帳號</label>
+                        <input type="text" class="form-control" id="user_id" name="user_id"
+                               required>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="email" name="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label for="social_id" name="social_id">身分證</label>
+                        <input type="text" class="form-control" id="social_id" name="social_id" maxlength="10" required pattern="[a-zA-Z]{1}[1-2]{1}\d{8}"
+                               onblur="identget()">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="phone_number" name="phone_number">電話號碼</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" maxlength="10" pattern="09\d{2}\d{3}\d{3}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="password">密碼</label>
+                        <input type="password" class="form-control" id="password" name="password" pattern="[a-zA-Z0-9]{8,}" required >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password2">再次確認密碼</label>
+                        <input type="password" class="form-control" id="password2" name="password2" required>
+                    </div>
+                </div>
+
+                <!-- <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="city">縣市</label><br>
+                        <select name="city" id="city" onchange='listener()'>
+                            <option value="0" selected>choose one</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="dist1">區域</label><br>
+                        <select name="dist1" id="dist1" onchange="fulfilladdress()">
+                            <option selected>choose one</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputZip">郵遞區號</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div> -->
+                <!-- <div class="form-row">
+
+
+                    <div class="form-group col-md-12">
+                        <label for="address">地址</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="台北市中正區">
+                    </div>
+
+                </div> -->
+
+                <div class="form-row justify-content-end">
+
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-success" onclick="return submitfunction()">Sign Up!</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% include "scripts.html" %}
+<script>
+
+var submitfunction = function () {
+    var Memberslist={{Memberslist|safe}};
+
+    if ( Memberslist.indexOf($("#user_id").val()) >=0) {
+      alert("帳號已被使用");
+      eval("document.form1['user_id'].focus()");
+    } else if ($("#user_id").val() == "") {
+      alert("你尚未填寫姓名");
+      eval("document.form1['user_id'].focus()");
+    }else if ($("#username").val() == "") {
+      alert("你尚未填寫姓名");
+      eval("document.form1['username'].focus()");
+    } else if ($("#password").val() == "") {
+      alert("你尚未填寫pwd");
+      eval("document.form1['password'].focus()");
+    } else if ($("#password").val() != $('#password2').val()) {
+      alert('密碼不一致！')
+      eval("document.form1['password'].focus()")
+    } else if ($("#email").val() == "") {
+      alert("你尚未填寫電子郵件地址");
+      eval("document.form1['email'].focus()");
+    } else {
+      if (identget() == true) {
+        document.form1.submit();
+      } else {
+        alert("請確認身分證!");
+      }
+
+    }
+    return false
+  };
+
+
+</script>
+
+</body>
+</html>
