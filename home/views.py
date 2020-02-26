@@ -390,9 +390,11 @@ def upload(request):
             sort .save()
             # sort = Classified(**item) 
             # sort.save()
+        return redirect("/gallery")
     title="UPLOAD"
     now=datetime.datetime.now()
     return render(request,'layout.html',locals())
+    
 
 
 def delmypic(request):
@@ -409,18 +411,12 @@ def delmypic(request):
         for i in selectedchecks:
             datas = Classified.objects.filter(**ownerdict).filter(image_path=i).delete()
             os.remove("./home/static/"+i.lstrip("./"))
-           
-            
-        
-
-       
-  
-            
-        
+        return redirect("/gallery")
         # datas = Classified.objects.filter(image_owner_id = userid)
         # print(datas[0].image_path)
         now=datetime.datetime.now()
         return render(request,'delmypic.html',locals())
+    return redirect("/gallery")
 
 
 def json(request):

@@ -36,14 +36,15 @@
 <!-- </div> -->
 <hr>
 <form action="/delmypic/" name="formpic" method="post">
+  {% if datas %}
   <button id="delpicaaa" type="submit" class="btn btn-primary nt-3">DELETE</button>
+  {% endif %}
   <hr>
   {%csrf_token%}
   {% for data in datas%}
   <div class="ml-5 imgblock" style="display: inline-block;text-align:center;">
 
     <!-- <div class="custom-control custom-checkbox mb-3"> -->
-
     <input type="checkbox" class="custom-control-input custom-checkbox" id="{{data.image_path}}" name="checks"
       value="{{ data.image_path }}">
     <label class="custom-control-label" for="{{data.image_path}}">
