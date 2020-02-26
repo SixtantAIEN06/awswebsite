@@ -17,10 +17,7 @@
     <input type="text" name="luis" class="form-control" id="luis">
   </div>
   <button type="submit" class="btn btn-primary nt-3">Submit</button>
-
-
 </form>
-{% for data in datas%}
 
 
 <!-- <div class="ml-3" style="float: left; z-index: auto;">
@@ -29,13 +26,91 @@
     </a>
 </div> -->
 
+<!-- <div class="ml-3" style="display:inline"> -->
+<!-- <label for="{{data.image_path}}"><input name="image_selected" id="{{ data.image_path }}" type="checkbox" value="{{ data.image_path }}"></label> -->
 
-<div class="ml-3" style="display:inline">
-  <a href="{% static data.image_path %}" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+<!-- <a href="{% static data.image_path %}" class="col-md-4"> -->
+<!-- <img id="gla" src="{% static data.image_path %}" style="max-width: 200px;" alt="">   -->
+<!-- </a> -->
+
+<!-- </div> -->
+<hr>
+<form action="/delmypic/" name="formpic" method="post">
+  <button id="delpicaaa" type="submit" class="btn btn-primary nt-3">DELETE</button>
+  <hr>
+  {%csrf_token%}
+  {% for data in datas%}
+  <div class="ml-5 imgblock" style="display: inline-block;text-align:center;">
+
+    <!-- <div class="custom-control custom-checkbox mb-3"> -->
+
+    <input type="checkbox" class="custom-control-input custom-checkbox" id="{{data.image_path}}" name="checks"
+      value="{{ data.image_path }}">
+    <label class="custom-control-label" for="{{data.image_path}}">
       <img id="gla" src="{% static data.image_path %}" style="max-width: 200px;" alt="">
-  </a>
-</div>
+    </label>
 
-{% endfor %}
+    <!-- </div> -->
+  </div>
+  {% endfor %}
+  <!-- <button id="delpicaaa" type="submit" class="btn btn-primary nt-3">Submit</button> -->
+</form>
 
+
+<script>
+  $.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+        // Only send the token to relative URLs i.e. locally.
+        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+      }
+    }
+  });
+
+  $("#delpic").click(function () {
+    $.ajaxSetup({
+      beforeSend: function (xhr, settings) {
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+          // Only send the token to relative URLs i.e. locally.
+          xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+      }
+    });
+
+    $.post("/delmypic/", $("#formpic").serialize()
+      , function (data) {
+
+      })
+  })
+</script>
 {% endblock%}

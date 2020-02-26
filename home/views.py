@@ -398,11 +398,29 @@ def upload(request):
 def delmypic(request):
     if 'user_id' not in request.session:
         return redirect("/")
-    userid=request.session["user_id"]
-    datas = Classified.objects.filter(image_owner_id = userid)
-    print(datas[0].image_path)
-    now=datetime.datetime.now()
-    return render(request,'delmypic.html',locals())
+    if request.method =='POST':
+        owner=request.session["user_id"]
+        print("------------------------")
+        # data= request.POST.get()
+        selectedchecks=request.POST.getlist("checks")
+        print(selectedchecks)
+        ownerdict={"image_owner_id":owner}
+        qs=[]
+        for i in selectedchecks:
+            datas = Classified.objects.filter(**ownerdict).filter(image_path=i).delete()
+            os.remove("./home/static/"+i.lstrip("./"))
+           
+            
+        
+
+       
+  
+            
+        
+        # datas = Classified.objects.filter(image_owner_id = userid)
+        # print(datas[0].image_path)
+        now=datetime.datetime.now()
+        return render(request,'delmypic.html',locals())
 
 
 def json(request):

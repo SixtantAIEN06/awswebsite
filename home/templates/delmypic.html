@@ -5,13 +5,14 @@
         <form method="POST" enctype="multipart/form-data" action="/delmypic/">
           {% csrf_token %}
             <div class="form-group">
-		{% for data in datas %}
+    {% for i in qs %}
+		{% for data in i %}
 
               <label for="111">
 	      <img src="{% static data.image_path %}" style="height:130px;width:auto">
               <input type="checkbox" id="111" style="display:none" >
                 {% endfor %}
-
+                 {% endfor %}
               <input type="submit" id="photoupload" value="sumit"class="btn btn-primary">Submit Delete</button>
             </div>
         </form>
