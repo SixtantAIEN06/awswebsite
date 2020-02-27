@@ -414,9 +414,14 @@ def delmypic(request):
         return redirect("/gallery")
         # datas = Classified.objects.filter(image_owner_id = userid)
         # print(datas[0].image_path)
-        now=datetime.datetime.now()
-        return render(request,'delmypic.html',locals())
-    return redirect("/gallery")
+    now=datetime.datetime.now()
+    userid=request.session["user_id"]
+    datas=Classified.objects.filter(image_owner=userid)
+    try:
+        del request.session['queryset']
+    except:
+        print('no session queryset')
+    return render(request,"manage.html",locals())
 
 
 def json(request):
