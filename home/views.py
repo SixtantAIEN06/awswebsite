@@ -464,10 +464,11 @@ def signup(request):
             request.session["message"]=message
             return redirect("/login/",locals())
 
-        if "message" not in request.session:
-            #message ="Hi~ Welcome to X-Photohub,relogin tks!"
-            request.session["message"]=message
+        # if "message" not in request.session:
+            # message ="Hi~ Welcome to X-Photohub,relogin thanks!"
+            # request.session["message"]=message
         # return render(request,'home/index.html',locals())
+        
         return redirect("/menu/")
     if "message" in request.session:
         del request.session["message"]
