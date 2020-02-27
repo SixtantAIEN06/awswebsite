@@ -60,7 +60,7 @@
 
 <form method="post" action="/login/" >
   {% csrf_token %}
-    <div><img class="center" id="radius" src="{% static 'website_picture/photohub.png'%}"></div>
+    <div><img class="center" id="radius" src="{% static 'website_picture/photohub-compressor.png'%}"></div>
     <div style="margin-bottom:50px;"><h1 class="mb-6" style="text-align: center;">{{ message }}</h1></div>
     {% if request.session.message %}
     <div style="margin-bottom:50px;"><h3 class="mb-6" style="text-align: center;">{{ request.session.message }}</h3></div>
