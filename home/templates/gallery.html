@@ -37,21 +37,23 @@
 <hr>
 <form action="/delmypic/" name="formpic" method="post">
   {% if datas %}
-  <button id="delpicaaa" type="submit" class="btn btn-primary nt-3">DELETE</button>
+  <button id="delpicaaa" type="button" class="btn btn-primary nt-3" onclick="myfunction()">DELETE</button>
+  <button id="delete" type="submit" class="btn btn-primary nt-3" style="display:none"></button>
+
   {% endif %}
   <hr>
   {%csrf_token%}
   {% for data in datas%}
   <div class="ml-5 imgblock" style="display: inline-block;text-align:center;">
 
-    <!-- <div class="custom-control custom-checkbox mb-3"> -->
+   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input custom-checkbox" id="{{data.image_path}}" name="checks"
       value="{{ data.image_path }}">
     <label class="custom-control-label" for="{{data.image_path}}">
       <img id="gla" src="{% static data.image_path %}" style="max-width: 200px;" alt="">
     </label>
 
-    <!-- </div> -->
+    </div>
   </div>
   {% endfor %}
   <!-- <button id="delpicaaa" type="submit" class="btn btn-primary nt-3">Submit</button> -->
@@ -59,6 +61,23 @@
 
 
 <script>
+function myfunction() {
+  
+  var r = confirm("確認刪除照片嗎？");
+  if (r == true) {
+  	$("#delete").click()
+  } else {
+      
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+
+
+
+
+
+
+
   $.ajaxSetup({
     beforeSend: function (xhr, settings) {
       function getCookie(name) {

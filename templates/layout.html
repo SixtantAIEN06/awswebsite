@@ -15,8 +15,15 @@
     </div>
     {% endif %}
     {% if photopath == None %}
+	{% if title == "STYLE TRANSFER" %}
+    <div><img id="blah" style=" max-height: 600px; max-width:500px; margin:0 auto" src="{% static 'website_picture/makups.jpg' %}"
+        alt="your image" title='' /></div>
+    {% else %}
     <div><img id="blah" style=" max-height: 600px; max-width:500px; margin:0 auto" src="{% static 'website_picture/star.jpg' %}"
         alt="your image" title='' /></div>
+
+{% endif %}
+
     {% endif %}
     <div class="input-group">
       <div class="custom-file">

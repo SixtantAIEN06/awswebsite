@@ -460,7 +460,7 @@ def signup(request):
             return redirect("/login/",locals())
 
         if "message" not in request.session:
-            message ="Hi~ Welcome to X-Photohub,relogin tks!"
+            #message ="Hi~ Welcome to X-Photohub,relogin tks!"
             request.session["message"]=message
         # return render(request,'home/index.html',locals())
         return redirect("/menu/")
@@ -512,7 +512,8 @@ def logout(request):
     if 'user_id' in request.session:
         del request.session['user_id']
     else:
-        return render(request,'home/index.html',locals())
+        #return render(request,'home/index.html',locals())
+        return redirect("/first")
     return render(request,'first.html',locals())
 
 
