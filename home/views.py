@@ -406,7 +406,7 @@ def delselect(request):
         for i in allchecks:
             data=Classified.objects.filter(image_path=i)
             datas.append(data)
-        return render(reques,'manageselect.html',locals())
+        return render(request,'manageselect.html',locals())
     return redirect('/gallery')
 
 def delmypic(request):
