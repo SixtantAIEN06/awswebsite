@@ -24,11 +24,11 @@
     </div>
     <button type="submit" class="btn btn-primary nt-3">Submit</button>
     <a class="btn btn-primary nt-3" href="/gallery">Clean</a>
-
+    <button type="button" class="btn btn-primary nt-3" onclick="forsubmit()">MANAGE</button>
 </form>
 <form action="/manageselect/" method="POST">
     {%csrf_token%}
-    <button id="manageselect" type="submit" class="btn btn-primary nt-3">MANAGE</button>
+    <button id="manageselect" type="submit" class="btn btn-primary nt-3" style="display: none;"></button>
 {% for data in output_imagepath %}
 
 
@@ -52,7 +52,12 @@
 {% endfor %}
 </form>
 
+<script>
+    function forsubmit() {
 
+          $("#manageselect").click()
+      }
+</script>
 {% endblock%}
 
 
