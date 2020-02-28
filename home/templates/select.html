@@ -27,6 +27,7 @@
 
 </form>
 <form action="/manageselect/" method="POST">
+    {%csrf_token%}
     <button id="manageselect" type="submit" class="btn btn-primary nt-3">MANAGE</button>
 {% for data in output_imagepath %}
 

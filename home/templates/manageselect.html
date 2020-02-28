@@ -37,14 +37,14 @@
 <!-- </div> -->
 <hr>
 <form action="/delmypic/" name="formpic" method="post">
-  
+  {%csrf_token%}
   {% if datas %}
   <button id="delpicaaa" type="button" class="btn btn-primary nt-3" onclick="myfunction()">DELETE</button>
   <button id="delete" type="submit" class="btn btn-primary nt-3" style="display:none"></button>
   {% endif %}
   <a class="btn btn-primary" href="/gallery">Gallery</a>  
   <hr>
-  {%csrf_token%}
+
   {% for data in datas%}
   <div class="ml-5 imgblock" style="display: inline-block;text-align:center;">
 
