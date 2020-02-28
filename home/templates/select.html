@@ -26,6 +26,8 @@
     <a class="btn btn-primary nt-3" href="/gallery">Clean</a>
 
 </form>
+<form action="/manageselect/" method="POST">
+    <button id="manageselect" type="submit" class="btn btn-primary nt-3">MANAGE</button>
 {% for data in output_imagepath %}
 
 
@@ -33,8 +35,7 @@
    <a href="{% static data %}" data-rel="lightcase"> <img id="gla" style="max-width: 200px;margin-top:20px" src="{% static data %}" alt=""></a>
 </div> -->
 
-<form action="/manageselect/" method="POST">
-    <button id="manageselect" type="submit" class="btn btn-primary nt-3">MANAGE</button>
+
 <div class="ml-5" style="display: inline-block;text-align:center;">
 
     <div class="custom-control custom-checkbox mb-3" style="inline-box;">
@@ -46,9 +47,9 @@
  
      </div>
    </div>
-</form>
-{% endfor %}
 
+{% endfor %}
+</form>
 
 
 {% endblock%}
