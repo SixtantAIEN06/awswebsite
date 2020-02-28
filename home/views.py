@@ -408,6 +408,8 @@ def delselect(request):
             print(newi)
             print("++++++++++++++++++++++++++++++++++")
             data=Classified.objects.filter(image_path=newi)
+            print(data.image_path)
+            print("123123456")
             datas.append(data)
         return render(request,'manageselect.html',locals())
     return redirect('/gallery')
