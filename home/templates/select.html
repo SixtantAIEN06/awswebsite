@@ -27,11 +27,26 @@
 
 </form>
 {% for data in output_imagepath %}
-<div class="ml-5" style="display:inline">
-   <a href="{% static data %}" data-rel="lightcase"> <img id="gla" style="max-width: 200px;margin-top:20px" src="{% static data %}" alt=""></a>
-</div>
-<!-- <div class="ml-3 mb-5" style="float: left;"><img id="gla" style="max-width: 200px;" src="{% static data.image_path %}" alt=""></div> -->
 
+
+<!-- <div class="ml-5" style="display:inline">
+   <a href="{% static data %}" data-rel="lightcase"> <img id="gla" style="max-width: 200px;margin-top:20px" src="{% static data %}" alt=""></a>
+</div> -->
+
+<form action="/manageselect/" method="POST">
+    <button id="manageselect" type="submit" class="btn btn-primary nt-3">MANAGE</button>
+<div class="ml-5" style="display: inline-block;text-align:center;">
+
+    <div class="custom-control custom-checkbox mb-3" style="inline-box;">
+     <input type="checkbox" class="custom-control-input custom-checkbox" id="{{data.image_path}}" name="checks"
+       value="{% static data %}" checked>
+     
+        <a href="{% static data %}" data-rel="lightcase"><img id="gla" src="{% static data %}" style="height:auto;max-width:200px;margin-top:20px" alt=""></a>
+    
+ 
+     </div>
+   </div>
+</form>
 {% endfor %}
 
 
