@@ -52,7 +52,7 @@
     <input type="checkbox" class="custom-control-input custom-checkbox" id="{{data.image_path}}" name="checks"
       value="{{ data.image_path }}">
     <label class="custom-control-label"style="font-family: "Times New Roman", Times, serif;" for="{{data.image_path}}">
-      <img id="gla" src="{% static data.image_path %}" style="height:auto;max-width:200px" alt="">
+      <img id="gla" src="{{ data.image_path }}" style="height:auto;max-width:200px" alt="">
     </label>
 
     </div>
