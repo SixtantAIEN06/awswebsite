@@ -20,15 +20,15 @@
             {% endif %}
 
         <label for="typename">語意分析用</label>
-        <input type="text" name="luis" class="form-control" id="luis">
+        <input type="text" name="luis" class="form-control" id="luis" x-webkit-speech lang="zh-TW"/>
     </div>
     <button type="submit" class="btn btn-primary nt-3">Submit</button>
     <a class="btn btn-primary nt-3" href="/gallery">Clean</a>
 
 </form>
 {% for data in output_imagepath %}
-<div class="ml-3" style="display:inline">
-    <img id="gla" style="max-width: 200px;" src="{% static data %}" alt="">
+<div class="ml-5" style="display:inline">
+   <a href="{% static data %}" data-rel="lightcase"> <img id="gla" style="max-width: 200px;margin-top:20px" src="{% static data %}" alt=""></a>
 </div>
 <!-- <div class="ml-3 mb-5" style="float: left;"><img id="gla" style="max-width: 200px;" src="{% static data.image_path %}" alt=""></div> -->
 

@@ -5,6 +5,7 @@ urlpatterns = [
     path('gallery/',views.gallery),
     path('styletransfer/',views.styletransfer),
     path('styletransfer2/',views.styletransfer2),
+    path('manageselect/',views.delselect),
     path('delmypic/',views.delmypic,name='uplaodfile'),
     # path('styletransfer/{imgpath:imgpath}',views.styletransfer),
     path('json/',views.json),

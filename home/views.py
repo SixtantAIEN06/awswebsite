@@ -395,7 +395,19 @@ def upload(request):
     now=datetime.datetime.now()
     return render(request,'layout.html',locals())
     
-
+def delselect(request):
+    if 'user_id' not in request.session:
+        return redirect("/")
+    if request.method=='POST':
+        allchecks=request.POST.getlist("selected")
+        print(allchecks)
+        print('--------------------------------')
+        datas=[]
+        for i in allchecks:
+            data=Classified.objects.filter(image_path=i)
+            datas.append(data)
+        return render(reques,'manageselect.html',locals())
+    return redirect('/gallery')
 
 def delmypic(request):
     if 'user_id' not in request.session:

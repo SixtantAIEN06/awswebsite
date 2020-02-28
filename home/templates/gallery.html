@@ -13,8 +13,8 @@
         <!-- <div class="form-group">
                 <label for="numbersinput">Numbers</label>
                 <input type="text" name="nums" class="form-control" id="numbersinput"> -->
-        <label for="typename">語意分析用</label>
-        <input type="text" name="luis" class="form-control" id="luis">
+       <h3> <label for="typename">語意搜尋</label><h3>
+        <input type="text" name="luis" class="form-control" id="luis" x-webkit-speech lang="zh-tw"/>
     </div>
     <button type="submit" class="btn btn-primary nt-3">Submit</button>
     <a class="btn btn-primary" href="/delmypic">MANAGE</a>
@@ -30,8 +30,8 @@
     </a>
 </div> -->
 
-<div class="rounded mx-auto d-block mt-5" style="width:300px;height:300;float: left; z-index: auto;">
-    <a href="{% static data.image_path %}" data-rel="lightcase"><img id="gla" src="{% static data.image_path %}" style="max-height:200px;width:auto" class="mx-auto d-block" alt="">
+<div class="ml-5" style="display:inline;">
+    <a href="{% static data.image_path %}" data-rel="lightcase" ><img id="gla" src="{% static data.image_path %}" style="height:auto;max-width:200px;margin-top:20px;" alt="">
 </a>
     <!-- <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
