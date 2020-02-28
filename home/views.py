@@ -404,8 +404,10 @@ def delselect(request):
         print('--------------------------------')
         datas=[]
         for i in allchecks:
-            i.split("/static/")
-            data=Classified.objects.filter(image_path=i)
+            newi=i.replace("/static/","")
+            print(newi)
+            print("++++++++++++++++++++++++++++++++++")
+            data=Classified.objects.filter(image_path=newi)
             datas.append(data)
         return render(request,'manageselect.html',locals())
     return redirect('/gallery')
