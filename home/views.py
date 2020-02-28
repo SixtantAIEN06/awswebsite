@@ -404,7 +404,7 @@ def delselect(request):
         print('--------------------------------')
         datas=[]
         for i in allchecks:
-            newi=i.replace("/static/","")
+            newi=i.replace("/static/","./")
             print(newi)
             print("++++++++++++++++++++++++++++++++++")
             data=Classified.objects.filter(image_path=newi)
