@@ -399,7 +399,7 @@ def delselect(request):
     if 'user_id' not in request.session:
         return redirect("/")
     if request.method=='POST':
-        allchecks=request.POST.getlist("selected")
+        allchecks=request.POST.getlist("checks")
         print(allchecks)
         print('--------------------------------')
         datas=[]
