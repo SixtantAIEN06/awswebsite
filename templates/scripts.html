@@ -27,6 +27,8 @@
     console.info(fileInput);
     if (fileInput) {
       $("#photouploadButton")[0].style.display = 'none';
+      b=$('<img src="{% static 'website_picture/loading.gif' %}" alt="" style="box-shadow: none; position: absolute;  left:40%; top: 40%; width:300px; height:300px;   z-index:999999; opacity:0.3; border-radius: 40px;">')
+      $('body').append(b);
       $("#photouploadButton1").submit();
       $("#warnforpic").text("")
     } else {
