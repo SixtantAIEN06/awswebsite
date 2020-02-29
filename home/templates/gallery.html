@@ -34,14 +34,17 @@
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div> -->
 </div>
-
-<section class="container">
-    <picture class="picture">
-        <div class="mockup"></div>
-        <img data-src="images/3qf.jpg" class="img lazy" alt="">
-        <noscript>
-            <img src="images/3qf.jpg" class="img" alt="">
+<div class="ml-5" style="display:inline;">
+    <section class="container">
+        <picture class="picture">
+            <a href="{% static data.image_path %}" data-rel="lightcase">
+                <div class="mockup"></div>
+            </a>
+            <img data-src="{% static data.image_path %}" class="img lazy" alt="">
+            <noscript>
+            <img src="{% static data.image_path %}" class="img" alt="">
         </noscript>
-    </picture>
-</section>
+        </picture>
+    </section>
+</div>
 {% endfor %} {% endblock%}
