@@ -164,6 +164,20 @@
                 watcher.observe(image)
             }
         })
+
+        const {
+            documentElement
+        } = document
+        documentElement.classList.length > 1 ?
+            documentElement.classList.remove('no-js') :
+            documentElement.removeAttribute('class')
+
+        if (!window.IntersectionObserver) {
+            const polyfillUrl = 'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver'
+            const polyfillScript = document.createElement('script')
+            polyfillScript.setAttribute('src', polyfillUrl)
+            document.body.appendChild(polyfillScript)
+        }
     </script>
 </head>
 
