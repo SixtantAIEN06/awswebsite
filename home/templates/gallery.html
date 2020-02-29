@@ -18,35 +18,34 @@
 
 </form>
 
-<section class="container">
-    <div class="ml-5" style="display:inline;">
-        {% for data in datas%}
 
-        <!-- <div class="ml-3" style="float: left; z-index: auto;">
+
+{% for data in datas%}
+<section class="container">
+    <!-- <div class="ml-3" style="float: left; z-index: auto;">
     <a href="{% static data.image_path %}" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
         <img id="gla" src="{% static data.image_path %}" style="max-width: 200px" alt="">
     </a>
 </div> -->
 
-        <!-- <div class="ml-5" style="display:inline;">
+    <!-- <div class="ml-5" style="display:inline;">
     <a href="{% static data.image_path %}" data-rel="lightcase"><img id="gla" class="img lazy" data-src="{% static data.image_path %}" style="height:auto;max-width:200px;margin-top:20px;" alt="">
     </a> -->
-        <!-- <div class="card-body">
+    <!-- <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div> -->
-        <!-- </div> -->
+    <!-- </div> -->
 
 
-        <picture class="picture">
-            <a href="{% static data.image_path %}" data-rel="lightcase">
-                <div class="mockup"></div>
-            </a>
-            <img data-src="{% static data.image_path %}" class="img lazy" alt="">
-            <noscript>
+    <picture class="picture">
+        <a href="{% static data.image_path %}" data-rel="lightcase">
+            <div class="mockup"></div>
+        </a>
+        <img data-src="{% static data.image_path %}" class="img lazy" alt="">
+        <noscript>
             <img src="{% static data.image_path %}" class="img" alt="">
         </noscript>
-        </picture>
+    </picture>
 
-
-        {% endfor %} </section>
-</div>{% endblock%}
+</section>
+{% endfor %} {% endblock%}
