@@ -21,7 +21,7 @@
 
 
 {% for data in datas%}
-<section class="container">
+<section class="container" style="display: inline;">
     <!-- <div class="ml-3" style="float: left; z-index: auto;">
     <a href="{% static data.image_path %}" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
         <img id="gla" src="{% static data.image_path %}" style="max-width: 200px" alt="">
@@ -37,7 +37,7 @@
     <!-- </div> -->
 
 
-    <picture class="picture" style="display: inline;">
+    <picture class="picture">
         <a href="{% static data.image_path %}" data-rel="lightcase">
             <div class="mockup"></div>
         </a>
