@@ -1,8 +1,8 @@
 {% load static %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
-    urlNow = window.location.href.split('/')
-    urlCheck = urlNow[urlNow.length - 2]
+    urlNow = window.location.href.split('/');
+    urlCheck = urlNow[urlNow.length - 2];
     if (urlCheck == "gallery") {
         $('.gallery').addClass('active')
     } else if (urlCheck == "facerecognition") {
@@ -13,7 +13,7 @@
         $('.delmypic').addClass('active')
     } else if (urlCheck == "upload") {
         $('.upload').addClass('active')
-    }
+    };
 
 
     console.log(urlNow[urlNow.length - 2]);
@@ -32,7 +32,7 @@
             $("#warnforpic").text("請選擇上傳檔案！");
             return false;
         }
-    }
+    };
     /// preview photo
     $("#inputGroupFile01").change(function(event) {
         RecurFadeIn();
@@ -58,17 +58,17 @@
             reader.readAsDataURL(input.files[0]);
         }
         $(".alert").removeClass("loading").hide();
-    }
+    };
 
     function RecurFadeIn() {
         console.log('ran');
         FadeInAlert("Wait for it...");
-    }
+    };
 
     function FadeInAlert(text) {
         $(".alert").show();
         $(".alert").text(text).addClass("loading");
-    }
+    };
 
     $(document).ready(function() {
 
@@ -80,7 +80,7 @@
 
         })
 
-    })
+    });
 
 
     $(document).ready(function() {
@@ -95,7 +95,7 @@
                     $("#show").text(datas)
                 })
             })
-    })
+    });
 
 
     $(document).ready(function() {
@@ -108,7 +108,7 @@
 
 
         })
-    })
+    });
 
     i = 1;
     $(window).scroll(function() {
